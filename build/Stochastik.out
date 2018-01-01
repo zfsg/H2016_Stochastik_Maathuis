@@ -1,0 +1,75 @@
+\BOOKMARK [1][-]{section.1}{Definitionen}{}% 1
+\BOOKMARK [2][-]{subsubsection.1.0.1}{Wahrscheinlichkeitsbaum}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.1}{Mengentheorie}{section.1}% 3
+\BOOKMARK [3][-]{subsubsection.1.1.1}{De Morgan'sche Regeln}{subsection.1.1}% 4
+\BOOKMARK [2][-]{subsection.1.2}{Axiome der Wahrscheinlichkeitsrechnung \(Kolmogorov\)}{section.1}% 5
+\BOOKMARK [3][-]{subsubsection.1.2.1}{Weitere Rechenregeln}{subsection.1.2}% 6
+\BOOKMARK [2][-]{subsection.1.3}{Modell von Laplace}{section.1}% 7
+\BOOKMARK [2][-]{subsection.1.4}{Unabh\344ngigkeit von Ereignissen}{section.1}% 8
+\BOOKMARK [2][-]{subsection.1.5}{Bedingte Wahrscheinlichkeiten}{section.1}% 9
+\BOOKMARK [3][-]{subsubsection.1.5.1}{Rechenregeln}{subsection.1.5}% 10
+\BOOKMARK [3][-]{subsubsection.1.5.2}{Redefinition der Unabh\344ngigkeit}{subsection.1.5}% 11
+\BOOKMARK [2][-]{subsection.1.6}{Satz der totalen Wahrscheinlichkeit}{section.1}% 12
+\BOOKMARK [2][-]{subsection.1.7}{Satz von Bayes}{section.1}% 13
+\BOOKMARK [1][-]{section.2}{Wahrscheinlichkeitsverteilungen}{}% 14
+\BOOKMARK [2][-]{subsection.2.1}{Definitionen}{section.2}% 15
+\BOOKMARK [2][-]{subsection.2.2}{Wahrscheinlichkeitsfunktion}{section.2}% 16
+\BOOKMARK [3][-]{subsubsection.2.2.1}{Kennzahlen}{subsection.2.2}% 17
+\BOOKMARK [3][-]{subsubsection.2.2.2}{Bernoulliverteilung [Bernoulli\(p\)]}{subsection.2.2}% 18
+\BOOKMARK [3][-]{subsubsection.2.2.3}{Binomialverteilung [Bin\(n,p\)]}{subsection.2.2}% 19
+\BOOKMARK [3][-]{subsubsection.2.2.4}{Geometrische Verteilung [Geom\(p\)]}{subsection.2.2}% 20
+\BOOKMARK [3][-]{subsubsection.2.2.5}{Poissonverteilung [Pois\(\)]}{subsection.2.2}% 21
+\BOOKMARK [1][-]{section.3}{Stetige Verteilungen}{}% 22
+\BOOKMARK [2][-]{subsection.3.1}{Wahrscheinlichkeitsdichte}{section.3}% 23
+\BOOKMARK [2][-]{subsection.3.2}{Kennzahlen}{section.3}% 24
+\BOOKMARK [2][-]{subsection.3.3}{Uniforme Verteilung [Uni\(a,b\)]}{section.3}% 25
+\BOOKMARK [2][-]{subsection.3.4}{Normalverteilung [N\(,2\)]}{section.3}% 26
+\BOOKMARK [3][-]{subsubsection.3.4.1}{Standardnormalverteilung [N\(0,1\)]}{subsection.3.4}% 27
+\BOOKMARK [2][-]{subsection.3.5}{Lognormalverteilung}{section.3}% 28
+\BOOKMARK [2][-]{subsection.3.6}{Exponentialverteilung [exp\(\)]}{section.3}% 29
+\BOOKMARK [1][-]{section.4}{Transformationen}{}% 30
+\BOOKMARK [2][-]{subsection.4.1}{Linear}{section.4}% 31
+\BOOKMARK [3][-]{subsubsection.4.1.1}{Standardisierung}{subsection.4.1}% 32
+\BOOKMARK [3][-]{subsubsection.4.1.2}{Allgemeiner monotoner Fall}{subsection.4.1}% 33
+\BOOKMARK [1][-]{section.5}{Deskriptive Statistik}{}% 34
+\BOOKMARK [2][-]{subsection.5.1}{Kennzahlen}{section.5}% 35
+\BOOKMARK [2][-]{subsection.5.2}{Grafische Darstellungen}{section.5}% 36
+\BOOKMARK [3][-]{subsubsection.5.2.1}{Histogramm}{subsection.5.2}% 37
+\BOOKMARK [3][-]{subsubsection.5.2.2}{Boxplot}{subsection.5.2}% 38
+\BOOKMARK [3][-]{subsubsection.5.2.3}{Empirische kumulative Verteilungsfunktion}{subsection.5.2}% 39
+\BOOKMARK [2][-]{subsection.5.3}{Mehrere Messgr\366ssen}{section.5}% 40
+\BOOKMARK [1][-]{section.6}{Mehrdimensionale Verteilungen}{}% 41
+\BOOKMARK [2][-]{subsection.6.1}{Gemeinsame, Rand- und bedingte Verteilungen}{section.6}% 42
+\BOOKMARK [2][-]{subsection.6.2}{Kovarianz und Korrelation}{section.6}% 43
+\BOOKMARK [2][-]{subsection.6.3}{Zweidimensionale Normalverteilung}{section.6}% 44
+\BOOKMARK [1][-]{section.7}{Grenzwerts\344tze}{}% 45
+\BOOKMARK [2][-]{subsection.7.1}{i.i.d.}{section.7}% 46
+\BOOKMARK [2][-]{subsection.7.2}{Summen und arithmetische Mittel von Zufallsvariabeln}{section.7}% 47
+\BOOKMARK [2][-]{subsection.7.3}{Gesetz der Grossen Zahlen / Zentraler Grenzwertsatz}{section.7}% 48
+\BOOKMARK [1][-]{section.8}{Parametersch\344tzungen}{}% 49
+\BOOKMARK [2][-]{subsection.8.1}{QQ-Plot}{section.8}% 50
+\BOOKMARK [2][-]{subsection.8.2}{Momenten Methode}{section.8}% 51
+\BOOKMARK [2][-]{subsection.8.3}{Maximum Likelihood Methode}{section.8}% 52
+\BOOKMARK [2][-]{subsection.8.4}{Sch\344tzer f\374r Parameter der Binomialverteilung}{section.8}% 53
+\BOOKMARK [2][-]{subsection.8.5}{Allgemeine Sch\344tzer f\374r Erwartungswert und Varianz}{section.8}% 54
+\BOOKMARK [3][-]{subsubsection.8.5.1}{Genauigkeit von Sch\344tzern}{subsection.8.5}% 55
+\BOOKMARK [1][-]{section.9}{Statistische Tests}{}% 56
+\BOOKMARK [2][-]{subsection.9.1}{Binominaltest}{section.9}% 57
+\BOOKMARK [2][-]{subsection.9.2}{Z-Test \( bekannt\)}{section.9}% 58
+\BOOKMARK [2][-]{subsection.9.3}{t-Test \( unbekannt\)}{section.9}% 59
+\BOOKMARK [1][-]{section.10}{Allg. Eigenschaften von stat. Tests}{}% 60
+\BOOKMARK [2][-]{subsection.10.1}{Macht}{section.10}% 61
+\BOOKMARK [2][-]{subsection.10.2}{P-Wert}{section.10}% 62
+\BOOKMARK [2][-]{subsection.10.3}{Multiple testing correction}{section.10}% 63
+\BOOKMARK [2][-]{subsection.10.4}{Vertrauensintervalle}{section.10}% 64
+\BOOKMARK [2][-]{subsection.10.5}{Statistische Signifikanz und Fachliche Relevanz}{section.10}% 65
+\BOOKMARK [2][-]{subsection.10.6}{Vorzeichen-Test}{section.10}% 66
+\BOOKMARK [2][-]{subsection.10.7}{Wilcoxon-Test}{section.10}% 67
+\BOOKMARK [1][-]{section.11}{Vergleich zweier Stichproben}{}% 68
+\BOOKMARK [2][-]{subsection.11.1}{Gepaarte und ungepaarte Stichproben}{section.11}% 69
+\BOOKMARK [2][-]{subsection.11.2}{Versuchsplanung}{section.11}% 70
+\BOOKMARK [2][-]{subsection.11.3}{Gepaarte Vergleiche}{section.11}% 71
+\BOOKMARK [2][-]{subsection.11.4}{Zwei-Stichproben Tests}{section.11}% 72
+\BOOKMARK [1][-]{section.12}{\334bersicht}{}% 73
+\BOOKMARK [2][-]{subsection.12.1}{Die wichtigsten 1D Verteilungen}{section.12}% 74
+\BOOKMARK [2][-]{subsection.12.2}{Rechenregeln}{section.12}% 75

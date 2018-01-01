@@ -1,0 +1,1235 @@
+\documentclass[8pt,a4paper]{scrartcl}
+
+\usepackage[ngerman]{babel}
+
+\input{../Headerfiles/Packages}
+\input{../Headerfiles/Titles}
+\input{../Headerfiles/Commands}
+\parindent 0pt
+
+\renewcommand{\baselinestretch}{1.3}
+
+\begin{document}
+
+\author{GianAndrea Müller}
+\title{Stochastik}
+
+\begin{multicols*}{3}
+\maketitle
+\tableofcontents
+\end{multicols*}
+
+\newpage
+
+\begin{multicols*}{3}
+\section{Definitionen}
+
+\begin{itemize}
+\ncompaq
+\item Elementarereignis $\omega$: Möglicher Ausgang eines Zufallsexperiments.
+\item Grundraum $\Omega$: Menge aller Elementarereignisse.
+\item Ereignis $A$: Kollektion gewisser Elementarereignisse.
+\item Disjunkte Mengen A und B \dahe $A\cap B = \{\}$.
+\end{itemize}
+
+\subsubsection{Wahrscheinlichkeitsbaum}
+
+\begin{itemize}
+\item In jeder Verzweigung ist die Summe der Wahrscheinlichkeiten 1.
+\item Wahrscheinlichkeiten für spezifische Kombinationen erhält man durch Multiplizieren der Wahrscheinlichkeiten eines bestimmten Pfades. Pfade des gleichen Ereignisses werden dann aufaddiert.
+\end{itemize}
+
+\subsection{Mengentheorie}
+
+\begin{tabular}{p{0.3\columnwidth}p{0.3\columnwidth}p{0.25\columnwidth}}
+\hline
+\textbf{Name}&\textbf{Symbol}&\textbf{Bedeutung}\\
+\hline
+\textbf{Durchschnitt}&$A\cap B$&\glqq$A$ \textbf{und} $B$\grqq\\
+\textbf{Vereinigung}&$A\cup B$&\glqq$A$ \textbf{oder} $B$\grqq\\
+\textbf{Komplement}&$A^c$&\glqq\textbf{nicht} $A$\grqq\\
+\textbf{Differenz}&$A\backslash B=A\cap B^c$&\glqq$A$ \textbf{ohne} $B$\grqq
+\end{tabular}
+
+\subsubsection{De Morgan'sche Regeln}
+\begin{itemize}
+\item $(A\cap B)^c=A^c\cup B^c$
+\item $(A\cup B)^c=A^c\cap B^c$
+\end{itemize}
+
+\mypic{VennDiagramme}
+
+\subsection{Axiome der Wahrscheinlichkeitsrechnung (Kolmogorov)}
+
+\begin{tabular}{lll}
+(A1)& $0\leq \mathbb{P}(A)\leq 1$&\\
+(A2)& $\mathbb{P}(\Omega)=1$&\\
+(A3)& $\mathbb{P}(A\cup B)=P(A)+P(B)$& $\forall A,B: A\cap B = \emptyset$\\
+& $\mathbb{P}(A_1\cup A_2\cup\cdots)=\sum\limits_{i\geq 1}\mathbb{P}(A_i)$&$\forall A_k\cap A_l = \emptyset,\ k\neq l$
+\end{tabular}
+
+\subsubsection{Weitere Rechenregeln}
+
+\begin{tabular}{rclr}
+$\mathbb{P}(A^c)$&=&$1-\mathbb{P}(A)$&$\forall A$\\
+$\mathbb{P}(A\cup B)$&=&$\mathbb{P}(A)+\mathbb{P}(B)-\mathbb{P}(A\cap B)$&$\forall A,B$\\
+$\mathbb{P}(A_1\cup\ldots\cup A_n)$&$\leq$&$\mathbb{P}(A_1)+\ldots +\mathbb{P}(A_n)$&\\
+$\mathbb{P}(B)$&$\leq$&$\mathbb{P}(A)$&$\forall A,B:\ B\subseteq A$\\
+$\mathbb{P}(A\backslash B)$&=&$\mathbb{P}(A)-\mathbb{P}(B)$&$\forall A,B:\ B\subseteq A$
+\end{tabular}
+
+\subsection{Modell von Laplace}
+
+$\mathbb{P}(\{\omega_k\})=\frac{1}{|\Omega|},\ k\geq 1$
+
+\important{$\mathbb{P}(A)=\sum\limits_{k:\omega_k\in A}\mathbb{P}(\{\omega_k\})=\sum\limits_{k:\omega_k\in A}\frac{1}{|\Omega|}=\frac{|A|}{|\Omega|}$}
+
+\subsection{Unabhängigkeit von Ereignissen}
+
+Wenn man die Wahrscheinlichkeiten $\prob{A}$ und $\prob{B}$ kennt, so kann man $\prob{A\cap B}$ im Allgemeinen nicht berechnen.
+
+\importname{für unabhängige Ereignisse}{$\prob{A\cap B}=\prob{A}\prob{B}$}
+
+\subsection{Bedingte Wahrscheinlichkeiten}
+
+\importname{bedingte Wahrscheinlichkeit von A gegeben B}{$\prob{A|B}=\frac{\prob{A\cap B}}{\prob{B}}$}
+
+\subsubsection{Rechenregeln}
+
+\begin{tabular}{ll}
+$0\leq\prob{A|B}\leq 1$&$\forall A$\\
+$\prob{B|B}=1$&\\
+$\prob{A_1\cup A_2|B}=\prob{A_1|B}+\prob{A_2|B}$&$\forall A_1,A_2:\ A_1\cap A_2=\mathbb{0}$\\
+$\prob{A^c|B}=1-\prob{A|B}$&$\forall A$
+\end{tabular}
+
+\subsubsection{Redefinition der Unabhängigkeit}
+
+$\prob{A\cap B}=\prob{A|B}\prob{B}=\prob{B|A}\prob{A}$
+
+\important{A,B unabhängig $\Leftrightarrow\ \prob{A|B}=\prob{A}\ \Leftrightarrow\ \prob{B|A}=\prob{B}$}
+
+\textbf{Achtung}: im Allgemeinen:
+
+\begin{align*}
+\prob{A|B} &\neq \prob{B|A}\\
+\prob{A|B^c}&\neq 1-\prob{A|B}
+\end{align*}
+
+\subsection{Satz der totalen Wahrscheinlichkeit}
+
+\important{$\prob{A}=\sum\limits_{i=1}^k\prob{A\cap B_i}=\sum\limits_{i=1}^k\prob{A|B_i}\prob{B_i}$}
+
+\note{$B_1\cup\ldots\cup B_k=\Omega$}
+
+\mypic{Partitionierung}
+
+\subsection{Satz von Bayes}
+
+\important{$\prob{B|A}=\frac{\prob{A\cap B}}{\prob{A}}=\frac{\prob{A|B}\prob{B}}{\prob{A}}$}
+
+\important{$\prob{B_i|A}=\frac{\prob{A|B_i}\prob{B_i}}{\prob{A}}=\frac{\prob{A|B_i}\prob{B_i}}{\sum_{l=1}^k\prob{A|B_l}\prob{B_l}}$}
+
+\section{Wahrscheinlichkeitsverteilungen}
+
+\subsection{Definitionen}
+
+\begin{tabular}{ll}
+Zufallsvariable & X\\
+Wertebereich & W\\
+realisierter Wert & x\\
+\end{tabular}
+
+\importname{Unabhängigkeit}{$\mathbb{P}(X\in A,Y\in B)=\mathbb{P}(X\in A)\mathbb{P}(Y\in B)$}
+
+\subsection{Wahrscheinlichkeitsfunktion}
+
+\important{$p(x_K)=\mathbb{P}(X=x_k),k\geq 1$}
+
+Eigenschaften:
+
+\begin{itemize}
+\item $\sum\limits_{k\geq 1}p(x_k)=1$
+\item $\mathbb{P}(X\in A)=\sum\limits_{k:x_k\in A}p(x_k)\qquad A\subset W$
+\item \begin{tabular}{l@{ = }l}$\prob(a<X\leq b)$&$\prob(X\in(a,b])$\\
+&$\prob(X\in(-\infty,b])-\prob(X\in(-\infty,a])$\\
+&$F(b)-F(a)$
+\end{tabular}
+\item $\prob(X>x)=1-\prob(X\leq x)=1-F(x)$
+\item F ist monoton steigend
+\item $\lim\limits_{x\rightarrow -\infty}F(x)=0$ und $\lim\limits_{x\rightarrow \infty}F(x)=1$
+\item F ist rechts-stetig \dahe $\lim\limits_{x\searrow a}F(x)=F(a)$
+\end{itemize}
+
+\importname{kumulative Wahrscheinlichkeitsfunktion}{$F(x)=\prob(X\leq x)$}
+
+\mypic{KumulativeWahrscheinlichkeitsfunktion}
+
+\subsubsection{Kennzahlen}
+
+\importname{Erwartungswert}{$\mu_x=\mathbb{E}[X]=\sum\limits_{k\geq 1}x_kp(x_k)$}
+
+für eine beliebige Transformation $Y=g(X),\ g\!:\!\mathbb{R}\rightarrow\mathbb{R}$
+
+\important{$\mathbb{E}[Y]=\mathbb{E}[g(X)]=\sum\limits_{k\geq 1}g(x_k)p(x_k)$}
+
+\importname{Varianz}{$Var(X)=\sigma_x^2=\mathbb{E}[(X-\mathbb{E}[X])^2]=\sum\limits_{k\geq 1}(x_k-\mu_X)^2p(x_k)$}
+
+\importname{Standardabweichung}{$\sigma_X=\sqrt{Var(X)}$}
+
+Rechenregeln:
+
+\begin{tabular}{l@{ = }l}
+$\mathbb{E}[a+bX]$&$a+b\cdot \mathbb{E}[X],\ a,b\in\mathbb{R}$\\
+$Var(X)$&$\mathbb{E}[X^2]-E[X]^2$\\
+$Var(a+bX)$&$b^2Var(X),\ a,b\in\mathbb{R}$\\
+$Var(a)$&$0,\ a\in\mathbb{R}$\\
+$\mathbb{E}[a+bX+cY]$&$a+b\cdot\mathbb{E}[X]+c\cdot\mathbb{E}[Y],\ a,b,c\in\mathbb{R}$
+\end{tabular}
+
+\subsubsection{Bernoulliverteilung [Bernoulli(p)]}
+
+\important{$X=\begin{cases}1&\text{Wahrscheinlichkeit p}\\0&\text{Wahrscheinlichkeit 1-p}\end{cases}$}
+
+Es gilt: $\mathbb{E}[X]=p\qquad Var(X)=p\cdot(1-p)$
+
+\note{$T_1,T_2\sim\text{Bern(p)}$, unabhängig \dahe $\min(T_1,T_2)\sim$ Bern($p^2$)}
+
+\subsubsection{Binomialverteilung [Bin(n,p)]}
+
+Verteilung der Anzahl Erfolge bei $n$ (unabhängigen) Wiederholungen eines Experiments. $W=\{0,1,\ldots,n\}$
+
+\important{$p(x)={n\choose x}p^x(1-p)^{n-x},\ x\in W$}
+
+$\mathbb{E}[X]=np\qquad Var(X)=n\cdot p\cdot(1-p)$
+
+\important{${n\choose x}=\frac{n!}{x!(n-x)!}$}
+
+\importname{Normalapproximation}{$\prob{X\leq x}\approx \Phi\left(\frac{x-np}{\sqrt{np(1-p)}}\right)$}
+
+\subsubsection*{Beispiel}
+
+\note{Wie gross ist die Wahrscheinlichkeit, dass bei 1000 Münzwürfen maximal 530 Mal Kopf erscheint?}
+
+\mportant{$X\sim \text{Bin}(1000,0.5)\rightarrow X\sim \mathcal{N}(\mu,\sigma^2)$}
+
+\mportant{$\mu=1000\cdot 0.5\qquad \sigma^2=1000\cdot 0.5\cdot (1-0.5)=250$}
+
+\important{$\prob{X\leq 530}=\Phi\left(\frac{530-500}{\sqrt{250}}\right)=\Phi(1.897)\approx 0.97$}
+
+\mypic{Binomialgeom}
+
+\subsubsection{Geometrische Verteilung [Geom(p)]}
+
+Anzahl Wiederholungen von unabhängigen Bernoulli(p) Experimenten bis zum ersten Erfolg.
+
+\important{$p(x)=p\cdot (1-p)^{x-1}$}
+
+$\mathbb{E}[X]=\frac{1}{p}\qquad Var(X)=\frac{1-p}{p^2}\qquad F(n)=1-(1-p)^n$
+
+\subsubsection{Poissonverteilung [Pois($\lambda$)]}
+
+\important{$p(x)=e^{-\lambda}\frac{\lambda^x}{x!},\ x\in W$}
+
+$\mathbb{E}[X]=\lambda\qquad Var(X)=\lambda\qquad \prob{X\geq 1|X\leq 1}=\frac{\lambda}{\lambda+1}$
+
+Für grosse $n$ und ein kleines $p$ mit $np=\lambda$ nähert sich die Poissonverteilung der Binominalverteilung an.
+
+\mportant{$\prob{X=x}={n\choose x}p^x(1-p)^{n-x}\approx e^{-\lambda}\frac{\lambda^x}{x!}$}
+
+\finn
+
+$X\sim$ Pois$(\lambda_1)$, $Y\sim$ Pois$(\lambda_2)$ mit $X$ und $Y$ unabhängig, dann gilt:
+
+\important{$X+Y\sim$ Pois$(\lambda_1+\lambda_2)$}
+
+\mypic{PoissNorm}
+
+\section{Stetige Verteilungen}
+
+\subsection{Wahrscheinlichkeitsdichte}
+
+\mportant{$f(x)=\lim\limits_{h\rightarrow 0}\frac{\prob{x<X\leq x+h}}{h}=\lim\limits_{h\rightarrow 0}\frac{F(x+h)-F(x)}{h}=F'(x)=f(x)$}
+
+\note{$\prob{x<X\leq x+h}\approx hf(x)\qquad \prob{a<X\leq b}=F(b)-F(a)=\int_a^bf(x)dx$}
+
+\mportant{$\intinf f(x)dx\equiv 1$}
+
+\subsubsection*{Bestimmen der Verteilungsfunktion}
+
+\mportname{Verteilungsfunktion für $Y=g(X)$}{$F(t)$}
+
+\important{$F(t)=\prob{Y\leq t}=\prob{x\leq g^{-1}(t)}=\int_0^{g^{-1}(t)}X dx$}
+
+\mportname{Verteilungsfunktion für $U=X+Y$}{$F(u)$}
+
+\important{$F(u)=\prob{U\leq u}=\prob{X+Y\leq u}=\int_0^u\int_0^{u-y}f_X(x)dxf_Y(y)dy$}
+
+\subsection{Kennzahlen}
+
+\important{$\expe{X}=\mu_X=\intinf{xf(x)dx}$}
+
+\mportant{$\expe{g(X)}=\intinf{g(x)f(x)dx}$}
+
+\important{$\var{X}=\sigma_X^2=\expe{(X-\mu_X)^2}=\intinf{(x-\mu_x)^2f(x)dx}$}
+
+\importname{$(\alpha\times 100)$\%-Quantil}{$\alpha=\prob{X\leq q_\alpha}=F(q_\alpha)\qquad q_\alpha=F^{-1}(\alpha)$}
+
+\note{Der Median ist das 50\%-Quantil.}
+
+\mypic{Quantil}
+
+\subsection{Uniforme Verteilung [Uni(a,b)]}
+
+\importable{
+$f(x)$&$=\begin{cases}\frac{1}{b-a}&a\leq x\leq b\\0&else\end{cases}$\\
+$F(x)$&$=\begin{cases}0&x<a\\\frac{x-a}{b-a}&a\leq x\leq b\\1&x>b\end{cases}$
+}
+
+\note{$W=[a,b]$}
+
+\mportable{
+$\expe{X}$&$=\frac{a+b}{2}$\\
+$\var{X}$&$=\frac{(b-a)^2}{12}$
+}
+
+\subsection{Normalverteilung $[\mathcal{N}(\mu,\sigma^2)]$}
+
+\important{$f(x)=\frac{1}{\sqrt{2\pi}\sigma}\exp\left\{-\onha\left(\frac{x-\mu}{\sigma}\right)^2\right\},\ x\in\mathbb{R}$}
+
+\note{$W=\mathbb{R}$}
+
+\mportable{
+$\expe{X}$&$=\mu$\\
+$\var{X}$&$=\sigma^2$
+}
+
+\note{
+\begin{itemize}
+\item Dichte der Normalverteilung ist symmetrisch um den Erwartungswert $\mu$.
+\item Je grösser $\sigma$, desto flacher oder breiter wird die Dichte.
+\item Fläche über dem Intervall $[\mu-\sigma,\mu+\sigma]$ ist ungefähr $2/3$.
+\item Fläche über dem Intervall $[\mu-2\sigma,\mu+2\sigma]$ ist ungefähr $0.95$.
+\item Wahrscheinlichkeit weniger als eine Standardabweichung vom Erwartungswert zu liegen: ca. $66\%$.
+\end{itemize}
+}
+
+\subsubsection{Standardnormalverteilung $[\mathcal{N}(0,1)]$}
+
+\importable{
+$\varphi(x)$&$=\frac{1}{\sqrt{2\pi}}\exp\left\{-\frac{x^2}{2}\right\}$\\
+$\Phi(x)$&$=\int_{-\infty}^x \varphi(u)du$
+}
+
+\mportable{
+$z_\alpha$&$=\Phi^{-1}(\alpha),\ \alpha\in(0,1)$\\
+$F(x)$&$=\Phi\left(\frac{x-\mu}{\sigma}\right)$
+}
+
+\note{Die Verteilungsfunktion $\mathcal{N}(\mu,\sigma^2)$ kann als Transformation von $\Phi$ berechnet werden.}
+
+\subsection{Lognormalverteilung}
+
+\mportant{$X\sim\mathcal{N}(\mu,\sigma^2)\qquad Y=e^X$}
+
+Eine Zufallsvariable Y heisst lognormalverteilt wenn ihr Logarithmus normalverteilt ist.
+
+\important{$f_Y(y)=\begin{cases}0&\leq 0\\\frac{1}{\sqrt{2\pi}\sigma y}\exp\left\{-\onha \left(\frac{\log(y)-\mu}{\sigma}\right)^2\right\}&y>0\end{cases}$}
+
+\subsection{Exponentialverteilung $[\exp(\lambda)]$}
+
+Die Exponentialverteilung ist das einfachste Modell für Wartezeiten auf Ausfälle und eine stetige Version der geometrischen Verteilung.
+
+\importable{
+$f(x)$&$=\begin{cases}0&x<0\\\lambda e^{-\lambda x}&x\geq 0\end{cases}$\\
+$F(x)$&$=\begin{cases}0&xy0\\1-e^{-\lambda x}&x\geq 0\end{cases}$
+}
+
+\importable{
+$\expe{X}$&$=1/\lambda$\\
+$\var{X}$&$=1/\lambda^2$
+}
+
+\note{$W=[0,\infty)$}
+
+\mypic{Exponential}
+
+\section{Transformationen}
+
+\subsection{Linear}
+
+$g(x)=a+bx,\ b>0$
+
+\mportable{
+$F_Y(y)$&$=\prob{Y\leq y}=\prob{a+bX\leq y}$\\
+&$=\prob{X\leq \frac{y-a}{b}}$\\
+&$=F_X(\frac{y-a}{b})$
+}
+
+\finn
+
+$b<0$
+
+\mportable{
+$F_Y(y)$&$=1-F_X(\frac{y-a}{b})$
+}
+
+\important{$f_Y(y)=\frac{1}{|b|}f_X\left(\frac{y-a}{b}\right)$}
+
+\subsubsection{Standardisierung}
+
+Eine Zufallsvariable kann immer so transformiert werden, dass sie Erwartungswert 0 und Varianz 1 hat.
+
+\important{$g(x)=\frac{x-\mu_X}{\sigma_X}$}
+
+\mportable{
+$\expe{Z}$&$=0$\\
+$\var{Z}$&$=1$
+}
+
+Beispiel:
+
+\mportable{
+$\prob{X\leq 3}$&$=\prob{\frac{X-\mu}{\sigma}\leq\frac{3-\mu}{\sigma}}$\\
+&$=\prob{Z\leq\frac{3-\mu}{\sigma}}$\\
+&$=\Phi\left(\frac{3-\mu}{\sigma}\right)$
+}
+
+\subsubsection{Allgemeiner monotoner Fall}
+
+g eine beliebige differenzierbare, streng monotone Funktion so hat $Y=g(X)$ die Dichte:
+
+\important{$f_Y(y)=\left|\frac{1}{g'(g^{-1}(y))}\right|f_X(g^{-1}(y)),\ y\in W_Y$}
+
+\mportant{$W_Y=g(W_X)=\{g(x),x\in W_X\}$}
+
+\finn
+
+\mportant{$\expe{Y}=\expe{g(X)}=\intinf{g(x)f_X(x)dx}$}
+
+Man braucht also für den Erwartungswert von Y die transformierte Dichte $f_Y$ nicht. \hfill Falls g konvex ist gilt: $\expe{g(x)}\geq g(\expe{X})$.
+
+\finn
+
+Die Quantile transformieren bei monoton wachsenden Funktionen mit:
+
+\mportant{$\alpha=\prob{X\leq q_\alpha}=\prob{g(X)\leq g(q_\alpha)}=\prob{Y\leq g(q_\alpha)}$}
+
+\mypic{Vergleich}
+
+\newpage
+
+\section{Deskriptive Statistik}
+
+Verfügbare Daten sind eine \textbf{Stichprobe} der \textbf{Grundgesamtheit}. Damit die Stichprobe repräsentativ ist, muss sie zufällig aus der Grundgesamtheit entnommen werden \dahe \textbf{Zufallsstichprobe}.
+
+\subsection{Kennzahlen}
+
+\importname{arithmetisches Mittel}{$\bar{x}=\frac{1}{n}(x_1+\cdots+x_n)$}
+
+\importname{empirisches Varianz}{$s^2=\frac{1}{n-1}\sum\limits_{i=1}^n(x_i-\bar{x})^2$}
+
+\mportname{geordnete Werte}{$x_{(1)}\leq x_{(2)}\leq\cdots\leq x_{(n)}$}
+
+\note{empirisches ($\alpha\times 100\%$)-Quantil}
+
+\important{$q_\alpha=\begin{cases}\onha(x_{(\alpha\cdot n)}+x_{(\alpha\cdot n+1)}&\text{falls }\alpha\cdot n\ \in\mathbb{Z}\\x_{(\ceil{\alpha\cdot n})}&\text{sonst}\end{cases}$}
+
+\importname{empirischer Median}{$q_{0.5}=\begin{cases}\onha(x_{(n/2)}+x_{(n/2+1)})&\text{falls $n$ gerade}\\x_{(\frac{n+1}{2})}&\text{falls $n$ ungerade}\end{cases}$}
+
+\mportname{unteres / oberes Quartil}{$q_{.25}$ / $q_{.75}$}
+
+\importname{Quartilsdifferenz (IQR)}{$q_{.75}-q_{.25}$}
+
+\subsection{Grafische Darstellungen}
+
+\subsubsection{Histogramm}
+
+\begin{itemize}
+\item Aufteilung des Wertebereichs in Klassen $(c_{k-1},c_k]$.
+\item Auftragen von Balken mit Höhe proportional zu $\frac{h_k}{c_k-c_{k-1}}$.
+\item Fläche der Balken proportional zu der Anzahl Beobachtungen im entsprechenden Interval.
+\item Grössere Klassenbreite führt zu Erosion. Gipfel werden abgetragen, Täler werden aufgefüllt.
+\item Sturges Rule: Aufteilung in $\ceil{1+\log_2(n)}$ gleich breite Intervalle.
+\item Beim Vergleich beachten: \hlpink{Diskret oder nicht?}
+\end{itemize}
+
+\mypic{HistogrammBoxplot}
+
+\subsubsection{Boxplot}
+
+\begin{itemize}
+\item Rechteck aus unterem und oberem Quartil.
+\item Median im Rechteck als Strich.
+\item Linien vom Rechteck zum grössten und kleinsten normalen Wert.
+\item Normaler Wert höchstens 1.5 mal die Quartilsdifferenz von einem der beiden Quartile entfern.
+\end{itemize}
+
+\subsubsection{Empirische kumulative Verteilungsfunktion}
+
+\important{$F_n(x)=\frac{1}{n}\text{Anzahl}\{i|x_i\leq x\}\in[0,1]$}
+
+\subsection{Mehrere Messgrössen}
+
+\importname{empirische Korrelation}{$r=\frac{s_{xy}}{s_xs_y}\in[-1,1]$}
+
+\important{empirische Kovarianz}{$s_{xy}=\frac{1}{n-1}\sum\limits_{i=1}^n(x_i-\bar{x})\cdot(y_i-\bar{y})$}
+
+\begin{itemize}
+\item $r=+1$ genau dann, wenn $y_i=a+bx_i$ für ein $a\in\mathbb{R}$ und $b>0$
+\item $r=-1$ genau dann, wenn $y_i=a+bx_i$ für ein $a\in\mathbb{R}$ und $b<0$
+\end{itemize}
+
+\important{Korrelation nie blind berechnen! \dahe Streudiagramm betrachten!}
+
+\vfill
+\null
+\columnbreak
+
+\section{Mehrdimensionale Verteilungen}
+
+\subsection{Gemeinsame, Rand- und bedingte Verteilungen}
+
+\small
+\begin{tabular}{p{0.3\linewidth}p{0.6\linewidth}}
+Gmsm. Wahr.funkt.&$\prob{X=x,Y=y},\ x\in W_X,\ y\in W_Y$\\
+\hline
+Randverteilung&$\prob{X=x}=\sum\limits_{y\in W_Y}\prob{X=x,Y=y},\ x\in W_X$\\
+\hline
+Bed. Verteilung&$\prob{X=x|Y=y}=\frac{\prob{X=x,Y=y}}{\prob{Y=y}}$\\
+\hline
+Erwartungswert&$\expe{g(x,y)}=\sum\limits_{\begin{smallmatrix}x\in W_X\\y\in W_Y\end{smallmatrix}}g(x,y)p(x,y)$\\
+\hline
+Bed. Erwartungswert&$\expe{Y|X=x}=\sum\limits_{y\in W_Y}y\prob{Y=y|X=x}$
+\end{tabular}
+
+\finn
+
+\begin{tabular}{p{0.3\linewidth}p{0.6\linewidth}}
+Gmsm. Wahr.dichte&$\prob{(X,Y)\in A}\int\int_Af_{X,Y}(x,y)dxdy$\\
+\hline
+Randdichte&$f_X(x)=\intinf f_{X,Y}(x,y)dy$\\
+\hline
+Bed. Dichte&$f_{Y|X=x}(y)=f_Y(y|X=x)=\frac{f_{X,Y}(x,y)}{f_X(x)}$\\
+\hline
+\multicolumn{2}{c}{\textcolor{red}{\textbf{Integralgrenzen beachten!}}}\\
+\hline
+Erwartungswert&$\expe{g(x,y)}=\int\int_{\mathbb{R}^2}g(x,y)f_{X,Y}(x,y)dxdy$\\
+\hline
+Bed. Erwartungswert&$\expe{Y|X=x}=\intinf y f_{Y|X=x}(y)dy$
+\end{tabular}
+\normalsize
+
+\finn
+
+Wenn X und Y unabhängig sind, kann man aus den Randverteilungen auf die gemeinsame Verteilung schliessen.
+
+\importname{Unabhängigkeit Diskret}{$\prob{X=x,Y=y}=\prob{X=x}\prob{Y=y},\ x\in W_X,\ y\in W_Y$}
+
+\importname{Unabhängigkeit Kontinuierlich}{$f_{X,Y}(x,y)=f_X(x)f_Y(y),x,y\in\mathbb{R}$}
+
+\importname{für eine Linearkombination}{$\expe{a+bX+cY}=a+b\cdot\expe{X}+c\cdot \expe{Y},\ a,b,c\in\mathbb{R}$}
+
+\newpage
+
+\subsection{Kovarianz und Korrelation}
+
+\mypic{Korrelation}
+
+\importname{Kovarianz}{Cov$(X,Y)=\expe{(X-\mu_X)(Y-\mu_Y)}$}
+
+\importname{Korrelation}{Corr$(X,Y)=\rho_{XY}=\frac{\text{Cov}(X,Y)}{\sigma_X\sigma_Y}$}
+
+\important{$-1\leq \text{Corr}(X,Y)\leq 1$}
+
+\mportabflex{r@{ = }l}{
+Corr$(X,Y)$&$+1\Leftrightarrow Y=a+bX,\ a\in\mathbb{R},\ b>0$\\
+Corr$(X,Y)$&$-1\Leftrightarrow Y=a+bX,\ a\in\mathbb{R},\ b<0$ 
+}
+
+\note{$|$Corr$(X,Y)|=1$ \dahe perfekt linearer Zusammenhang.
+
+Corr$(X,Y)=0$ \dahe X und Y sind unkorreliert.
+
+\importname{\\\note{\hlcyan{Umkehrung gilt im allgemeinen \textbf{nicht}!}}}{$X$ und $Y$ sind unabhängig $\Rightarrow$ Corr$(X,Y)$ = 0}
+}
+
+
+
+\important{Var$(X)$=Cov$(X,X)$}
+
+\important{Cov$(X,Y)$=$\expe{XY}-\expe{X}\expe{Y}$}
+
+\importname{bei Unabhängigkeit}{$\expe{XY}=\expe{X}\expe{Y}$}
+
+\important{$\text{Cov}\left(\sum\limits_{i=1}^na_iX_i,\sum\limits_{j=1}^mb_jY_j\right)=\sum\limits_{i=1}^n\sum\limits_{j=1}^ma_ib_j\cov{X_i,Y_j},\ a_i,b_j\in\mathbb{R}$}
+
+\mportant{$\cov{a+bX,c+dY}=bd\cov{X,Y}$}
+
+\mportant{$\corr{a+bX,c+dY}=\sign{b}\sign{d}\corr{X,Y}$}
+
+\important{$\text{Var}\left(\sum\limits_{i=1}^nX_i\right)=\sum\limits_{i=1}^n\var{X_i}+2\sum\limits_{i<j}^n\cov{X_i,X_j}$}
+
+\mportant{$\var{X+Y}=\var{X}+\var{Y}+2\cov{X,Y}$}
+
+Falls $X_i$ unabhängig ist die Varianz der Summe die Summe der Varianzen:
+
+\mportant{$\var{X_1+\cdots+X_n}=\var{X_1}+\cdots+\var{X_n}$}
+
+\subsection{Zweidimensionale Normalverteilung}
+
+\important{$f_{X,Y}(x,y)=\frac{1}{2\pi\sqrt{det(\Sigma)}}\exp\left\{-\onha(x-\mu_X,y-\mu_Y)\Sigma^{-1}\begin{pmatrix}x-\mu_X\\y-\mu_Y\end{pmatrix}\right\}$}
+
+where
+
+\mportant{$\Sigma=\begin{pmatrix}\cov{X,X}&\cov{X,Y}\\ \cov{Y,X}&\cov{Y,Y}\end{pmatrix}=\begin{pmatrix}\sigma_X^2&\cov{X,Y}\\ \cov{X,Y}&\sigma_Y^2\end{pmatrix}$}
+
+\note{Wenn $\cov{X,Y}=0$ gilt, so ist $\Sigma$ eine Diagonalmatrix. Dann lässt sich die Wahrscheinlichkeitsdichte als Produkt der beiden Randdichten berechnen. Im Falle der 2D Normalverteilung gilt als dass aus Unkorreliertheit Unabhängigkeit folgt. Im Allgemeinen gilt das jedoch nicht.}
+
+\section{Grenzwertsätze}
+
+\subsection{i.i.d.}
+
+$n$ Zufallsvariabeln $X_1,\ldots,X_n$, $X_i$: i-te Wiederholung.
+
+Alle Variablen unabhängig und gleich verteilt.
+
+\important{i.i.d. : independent and identically distributed}
+
+\subsection{Summen und arithmetische Mittel von Zufallsvariabeln}
+
+\mportant{$S_n=X_1+\ldots+X_n$}
+
+\mportant{$\bar{X}_n=\frac{1}{n}S_n$}
+
+\importabflex{lll}{
+$\expe{S_n}=n\expe{X_i}$&$\text{Var}(S_n)=n\text{Var}(X_i)$&$\sigma_{S_n}=\sqrt{n}\sigma_{x_i}$\\
+$\expe{\bar{X}_n}=\expe{X_i}$&$\text{Var}(\bar{X}_n)=\frac{1}{n}\text{Var}(X_i)$&$\sigma_{\bar{X}_n}=\frac{1}{\sqrt{n}}\sigma_{X_i}$
+}
+
+\vfill
+\null
+\columnbreak
+
+\subsection{Gesetz der Grossen Zahlen / Zentraler Grenzwertsatz}
+
+\important{$\bar{X}_n\overset{n\rightarrow\infty}{\rightarrow}\mu$}
+
+\note{$\expe{\bar{X}_n}=\expe{X_i}\qquad \var{(\bar{X}_n)}\rightarrow0(n\rightarrow \infty)$}
+
+\mportant{$f_n(A)\overset{n\rightarrow \infty}{\rightarrow}\prob{A}$}
+
+\important{$S_n\approx\mathcal{N}(n\mu,n\sigma^2)$}
+
+\important{$\bar{X}_n\approx\mathcal{N}(\mu,\frac{\sigma^2}{n})$}
+
+\note{Falls $X_i,\ldots,X_n$ i.i.d. mit Erwartungswert $\mu$ und Varianz $\sigma^2$. Meistens ist $n\geq 30$ schon genug.}
+
+Ausnahmen:
+\begin{itemize}
+\item $X_i\sim\text{Bern(p)}$ \dahe $X_i\in\{0,1\}$ \dahe $S_n\sim \text{Bin}(n,p)$ mit $p=\prob{X_i}=1$.
+\item $X_i\sim\text{Pois}(\lambda)$ \dahe $S_n\sim \text{Pois}(n\lambda)$.
+\item $X_i\sim\mathcal{N}(\mu,\sigma^2)$ \dahe $S_n\sim\mathcal{N}(n\mu,n\sigma^2)$ und $\bar{X}_n\sim\mathcal{N}(\mu,\frac{\sigma^2}{n})$
+\end{itemize}
+
+\note{
+Weiterhin:
+
+$\text{Bin(n,p)}\sim\mathcal{N}$ für grosse $n$, nicht zu kleine $p$
+
+$\text{Pois}(\lambda) \sim \mathcal{N}$ für grosse $\lambda$}
+
+\subsubsection*{Beispiel}
+
+\mportname{\\ \note{$X_i$ und $I_i$ unabhängig}}{$X_i\sim\text{Exp}(0.5)\quad I_i\sim\text{Ber}(0.2)$}
+
+\mportant{$\prob{\sum_{i=1}^{25}X_i I_i\geq 20}=?$}
+
+\note{$\expe{X_i I_i}=0.4\qquad \expe{(X_i I_i)^2}=1.6$}
+
+$\prob{\sum_{i=1}^{25}X_iI_i\geq 20}=\prob{\frac{\sum_{i=1}^{25}X_iI_i-25\expe{X_1I_1}}{\sqrt{25 \var{X_1I_1}}}\geq\frac{20-25\expe{X_1I_1}}{\sqrt{25\var{X_1I_1}}}}$
+
+$\prob{\sum_{i=1}^{25}X_iI_i\geq 20}\approx 1-\Phi\left(\frac{20-25\expe{X_1I_1}}{5\sqrt{\var{X_1I_1}}}\right)=1-\Phi(1.667)=0.05$
+
+\subsubsection*{Für Produkte}
+
+$X_i$ i.i.d.
+
+\mportant{$Y=\prod\limits_i X_i$}
+
+\mportant{$\log(Y)=\sum\limits_i\log(Y_i)$}
+
+\dahe $\log(Y)$ normalverteilt \dahe $Y$ \textbf{lognormalverteilt}
+
+\newpage
+
+\section{Parameterschätzungen}
+
+\mportname{Verteilungsfamilie}{$F(\Theta)$}
+
+\mportname{Parameter der Familie}{$\Theta$}
+
+\mportname{Schätzwert}{$\hat{\cdot}$}
+
+\subsection{QQ-Plot}
+
+\note{\textbf{Grundidee:} Die empirischen Quantile müssen den theoretischen entsprechen, wenn die Daten tatsächlich aus der entsprechenden Verteilung kommen.}
+
+\mportant{$\alpha_k=\frac{k-0.5}{n},k=1,\ \forall\ \ldots,n$}
+
+\note{$\alpha n=k-0.5\qquad \ceil{\alpha_k n}=k$ also $q_{\alpha_k}=X_{(k)}$}
+
+\mportname{theoretisches Quantil}{$F^{-1}(\alpha_k)$}
+
+\note{wobei $F$: kumulative Verteilungsfunktion}
+
+\importname{QQ-Plot}{$\{F^{-1}(\alpha_k),x_{(x)}\},\ k=1,\ldots,n$}
+
+\note{
+\begin{itemize}
+\item Wenn die geschätzten Parameter stimmen liegen die Punkte des QQ-Plots auf der Linie $x=y$.
+\item Zur Berechnung der Quantile muss die Verteilung der Daten quasi schon bekannt sein \dahe Man geht von einer Normalverteilung aus und prüft die Annahme im Plot.
+\item Wenn man die theoretischen Quantile aus $\mathcal{N}(0,1)$ \dahe \textbf{Normalplot}
+\item $X\sim \mathcal{N}(\mu,\sigma^2)$\dahe$q_\alpha = \mu+\sigma z_\alpha$
+\end{itemize}
+}
+
+\mypic{Quantile}
+
+\begin{enumerate}[label={\alph*)}]
+\item Empirische Quantile weiter weg als theoretische \dahe Langschwänzige Verteilung.
+\item Empirische Quantile näher als theoretische \dahe Kurzschwänzige Verteilung.
+\item Tiefe emp. Q. näher \dahe links kurz, hohe emp. Q. weiter weg \dahe rechts lang \dahe \textbf{Schiefe Verteilung}
+\item Tiefe emp. Q. weiter weg \dahe links lang, hohe emp. Q. näher \dahe recht kurz \dahe \textbf{Schiefe Verteilung}
+\end{enumerate}
+
+\subsection{Momenten Methode}
+
+\importname{Momente von X}{$\mu_k(\Theta)=\expe{X^k},\ \forall\ k=1,2,\ldots$}
+
+\importname{empirische Momente von X}{$m_k=\frac{1}{n}\sum\limits_{i=1}^nx_i^k$}
+
+\note{Jetzt sollen die Parameter so gewählt werden das die empirischen mit den theoretischen Momenten übereinstimme.}
+
+\important{$\begin{matrix}\mu_1(\Theta)=m_1\\\mu_2(\Theta)=m_2\\\vdots\\\mu_r(\Theta)=m_r\end{matrix}$}
+
+\note{
+\begin{itemize}
+\item Der Momentenschätzer ist dann die Lösung dieses Gleichungssystems.
+\item Nicht unbedingt eindeutig und kann auch unsinnige Resultate liefern.
+\item Beispiel: \begin{tabular}{l@{$\overset{!}{=}$}l}$m_1$&$\mu_1=\expe{X}=\mu$\\$m_2$&$\mu_2=\expe{X^2}=\sigma^2+\mu^2$\end{tabular}
+\end{itemize}
+}
+
+\subsection{Maximum Likelihood Methode}
+
+\important{$L(\Theta)=p_{X_1,\ldots,X_n}(x_1,\ldots,x_n|\Theta)=\prod\limits_{i=1}^np_X(x_i|\Theta)$}
+
+\note{Die Likelihoodfunktion beschreibt wie wahrscheinlich es unter einem Parametersatz $\Theta$ ist die beobachteten Grössen zu erhalten.}
+
+\important{$l(\Theta)=\log(L(\Theta))=\sum\limits_{i=1}^n\log(p_X(x_i|\Theta)$}
+
+\note{Man kann auch alternativ die log-Likelihoodfunktion maximieren, da der Logarithmus monoton wachsend ist.}
+
+\important{$\frac{\partial}{\partial \Theta}l(\Theta,x_1,\ldots,x_n)=0\qquad \hat{\Theta}=\hat{\Theta}(x_1,\ldots,x_n)$}
+
+\mportant{\textbf{Wenn nötig 2. Ableitung überprüfen!}}
+
+\subsection{Schätzer für Parameter der Binomialverteilung}
+
+\important{$\hat{p}=\frac{n_{erfolge}}{n_{messungen}}=\frac{x}{n}$}
+
+\importname{Vertrauensintervall}{$\hat{p}\pm\Phi^{-1}(1-\frac{\alpha}{2})\cdot \sqrt{\hat{p}(1-\hat{p})\frac{1}{n}}$}
+
+\subsection{Allgemeine Schätzer für Erwartungswert und Varianz}
+
+\mportant{$X_1,\ldots,X_n\overset{i.i.d.}{\sim}F(\Theta)$}
+
+\note{$F$ \textbf{und} $\Theta$ unbekannt.}
+
+\mportabflex{lcl}{
+$\hat{\mu}_X$=$\bar{X_n}=\frac{1}{n}\sum\limits_{i=1}^nX_i$&\hspace{3ex}&$\expe{\hat{\mu}_X}=\expe{X}=\mu$\\
+&&$\var{\hat{\mu}_X}=\frac{1}{n}\sigma_X^2$\\
+$\hat{\sigma}^2_X=S^2_n=\frac{1}{n-1}\sum\limits_{i=1}^n(X_i-\bar{X}_n)^2$&&$\expe{\hat{\sigma}_X^2}=\sigma_X^2$
+}
+
+\subsubsection{Genauigkeit von Schätzern}
+
+\mportant{$X_1,\ldots,X_n\overset{i.i.d}{\sim}\mathcal{N}(\mu,\sigma^2)$}
+
+\mportant{$\hat{\mu}_X\sim\mathcal{N}(\mu,\frac{\sigma^2}{n})$}
+
+Mit Wahrscheinlichkeit $95\%$ liegt der Schätzer dann im Intervall:
+
+$p\left(\mu-z_{0.975}\frac{\sigma}{\sqrt{n}}\leq\hat{\mu}\leq \mu+z_{0.975}\frac{\sigma}{\sqrt{n}}\right)=95\%$
+
+$p\left(-z_{0.975}\frac{\sigma}{\sqrt{n}}\leq \hat{\mu}-\mu\leq z_{0.975}\frac{\sigma}{\sqrt{n}}\right)95\%$
+
+$p\left(-z_{0.975}\leq\frac{\hat{\mu}-\mu}{\sigma/\sqrt{n}}\leq z_{0.975}\right)=95\%$
+
+$p\left(\hat{\mu}\in[\mu-z_{0.975}\frac{\sigma}{\sqrt{n}},\mu+z_{0.975}\frac{\sigma}{\sqrt{n}}]\right)=95\%$
+
+oder
+
+$p\left(|\hat{\mu}-\mu|\leq z_{0.975}\frac{\sigma}{\sqrt{n}}\right)=95\%$
+
+oder
+
+\important{$p(\mu\in\hat{\mu}\pm 2\frac{\sigma}{\sqrt{n}})\approx p(\mu\in \underbrace{\hat{\mu}\pm z_{0.975}\frac{\sigma}{\sqrt{n}}}_{\text{Vertrauensinterval}})=95\%$}
+
+\note{$1.96=z_{0.975} = 0.975\cdot 100\% $-Quantil von $\mathcal{N}_0^1$
+
+Links und rechts ein 2.5\% Anteil.
+
+Merkregel: \glqq Schätzung $\pm$ 2 $\times$ Standardfehler\grqq
+}
+
+\newpage
+
+\section{Statistische Tests}
+
+\subsection{Binominaltest}
+
+\mportname{Nullhypothese}{$H_0\ :\ p=p_0$}
+
+\mportname{Alternativhypothese}{$\begin{matrix}p\neq p_0& \text{(\glqq zweiseitig\grqq)}\\p>p_0&\text{(\glqq einseitig nach oben\grqq)}\\p<p_0&\text{(\glqq einseitig nach untern\grqq)}\end{matrix}$}
+
+\begin{center}
+\begin{tabular}{|l|l|l|l|}
+\cline{3-4}
+\multicolumn{2}{c|}{}&\multicolumn{2}{c|}{Entscheidung}\\
+\cline{3-4}
+\multicolumn{2}{c|}{}&$H_0$&$H_A$\\
+\hline
+\multirow{2}{*}{Wahrheit}&$H_0$&Kein Fehler&Fehler 1. Art\\
+\cline{2-4}
+&$H_A$&Fehler 2. Art&Kein Fehler\\
+\hline
+\end{tabular}
+\end{center}
+
+\important{$\mathbb{P}_{p_0}(X\geq c)=\sum\limits_{k=c}^n{n\choose k}p_0^k(1-p_0)^{n-k}$}
+
+\mportant{$\mathbb{P}_{p_0}(X\leq c)\leq \alpha$}
+
+\importname{Signifikanzniveau}{$\alpha=0.05$ oder $0.01$}
+
+Falls $x\geq c(\alpha)$ ist die Alternativhypothese statistisch nachgewiesen.
+Die Abweichung von der Nullhypothese ist \textbf{signifikant}. \dahe Die Wahrscheinlichkeit einen Fehler 1. Art zu begehen ist kleiner $\alpha$.
+
+Wobei c der Wert der Realisierung x von X ist ab dem wir davon ausgehen können das die Realisierung mit einem Signifikanzniveau von $\alpha$ $H_0$ widerspricht, d.h. kein Zufall ist.
+
+\mportname{Verwerfungsbereich}{$K=\{c,c+1,\ldots,n\}$}
+
+\note{Komplementär dazu der \textbf{Akzeptanzbereich}.}
+
+\note{
+Anleitung
+\begin{enumerate}
+\item Geeignetes Modell für die Daten wählen.
+\item $H_0$
+\item $H_A$
+\item Signifikanzniveau $\alpha$ wählen.
+
+$\Rightarrow \prob{\text{Fehler 1. Art}}\leq \alpha$
+\item Verwerfungsbereich finden
+\end{enumerate}
+}
+
+\mportant{\textbf{Absence of evidence is not evidence of absence.}}
+
+\note{Falls $H_0$ nicht verworfen werden kann ist das nicht der Nachweis der Wahrheit von $H_0$.}
+
+\subsection{Z-Test ($\sigma$ bekannt)}
+
+Statistischer Test für normalverteilte Daten mit bekannter Streuung.
+
+\mportant{$\bar{X}_n\sim \mathcal{N}(\mu,\sigma^2,/n)$}
+
+\mportant{$H_0:\mu=\mu_0$}
+
+\mportable{
+$H_A:$&$A:\ \mu\neq\mu_0$\\
+&$B:\ \mu>\mu_0$\\
+&$C:\ \mu<\mu_0$
+}
+
+\importname{Teststatistik}{$Z=\frac{\bar{X}_n-\mu_0}{\sigma/\sqrt{n}}=\frac{\text{beobachtet - erwartet}}{\text{Standardfehler}}$}
+
+\note{Eine \textbf{Teststatistik} ist eine (spezielle) Zufallsvariable die verwendet wird um die Testentscheidung zu treffen. }
+
+\note{
+\importabflex{l@{$\Leftrightarrow$}ll}{
+$|z|\geq z_{1-\alpha/2}$&$z\in K=(-\infty,-z_{1-\alpha/2}]\cup[z_{1+\alpha/2},\infty)$&für $H_A:\mu\neq\mu_0$\\
+$z\geq z_{1-\alpha}$&$z\in K=[z_{1-\alpha},\infty)$&für $H_A:\mu>\mu_0$\\
+$z\leq z_\alpha=-z_{1-\alpha}$&$z\in K=(-\infty,z_\alpha]=(-\infty,-z_{1-\alpha}]$&für $H_A:\mu<\mu_0$
+}
+
+Begründung für Fall 1: Die Wahrscheinlichkeit für einen Fehler 1. Art ist $\prob{|Z|\geq z_{1-\frac{\alpha}{2}}}_{\mu_0}=\alpha$
+}
+
+\mypic{ZweiseitigerZTest}
+
+\subsection{t-Test ($\sigma$ unbekannt)}
+
+Statistischer Test für normalverteilte Daten mit unbekannter Streuung. Wir ersetzen daher $\sigma$ mit einem Schätzer $S_n/\sqrt{n}$
+
+\importname{Teststatistik}{$T=\frac{\bar{X}_n-\mu_0}{S_n/\sqrt{n}}=\frac{\text{beobachtet-erwartet}}{\text{geschätzter Standardfehler}}$}
+
+Durch den Schätzer haben wir eine zusätzliche Variationsquelle \dahe T ist keine Standardnormalverteilung sondern folgt einer \textbf{t-Verteilung} mit n-1 Freiheitsgraden.
+
+\mportant{$T\sim t_{n-1}$}
+
+\note{Eine t-Verteilung ist symmetrisch um 0, nimmt aber eher betragsmässig grosse Werte an / ist langschwänziger.
+
+Pro Beobachtung ein Freiheitsgrad, pro Parameter der uns interessiert müssen wir einen bezahlen \dahe n-1 Freiheitsgrade (n Beobachtungen - $\mu$ gesucht).
+}
+
+\important{$t=\frac{\bar{x}_n-\mu_0}{s_n/\sqrt{n}}$}
+
+\note{
+\importabflex{l@{$\Leftrightarrow$}ll}{
+$|t|\geq t_{n-1,1-\frac{\alpha}{2}}$&$t\in K =(-\infty, -t_{n-1,1-\frac{\alpha}{2}}]\cup[t_{n-1,1-\frac{\alpha}{2}})$&$H_A:\mu\neq\mu_0$\\
+$t\geq t_{n-1,1-\alpha}$&$t\in K =[t_{n-1,1-\alpha},\infty)$&$H_A:\mu>\mu_0$\\
+$t\leq t_{n-1,\alpha}$&$t\in K=(-\infty,t_{n-1,\alpha}]=(-\infty,-t_{n-1,1-\alpha}]$&$H_A:\mu<\mu_0$
+}
+}
+
+\section{Allg. Eigenschaften von stat. Tests}
+
+\subsection{Macht}
+
+\important{$\prob{\text{Fehler 1. Art}}\leq\alpha$}
+
+\important{$\beta(\theta)=\prob{\text{Fehler 2. Art}}$}
+
+\importname{Macht}{$1-\beta(\theta) = \prob{\text{Test verwirft richtigerweise }H_0 \text{ für } \theta\in H_A$}}
+
+\subsubsection*{Berechnung von $\beta$}
+
+\begin{enumerate}
+\ncompaq
+\item Verwerfungsbereich K auf Niveau $\alpha$ festlegen.
+\item Annahme treffen für $\theta\in H_A$
+\item Verteilung von X bezüglich $\theta$ berechnen.
+\item $\beta$ ist dann die Wahrscheinlichkeit, dass $X(\theta)$ in $K(\alpha)$ fällt.
+\end{enumerate}
+
+Je weiter $\mu$ von $\mu_0$ weg liegt, desto grösser die Macht. Je grösser die Stichprobe desto grösser die Macht.
+
+\mypic{Macht}
+
+\newpage
+
+\subsection{P-Wert}
+
+Je kleiner das Signifikanzniveau $\alpha$ desto schwieriger wird es $H_0$ zu verwerfen.
+
+Der p-Wert is die Wahrscheinlichkeit, unter der Nullhypothese ein mindestens so extremes Ereignis zu beobachten wie das aktuell beobachtete.
+
+\mypic{p-Wert}
+
+\note{Bin(10,0.5)-Verteilung, $H_0:p=0.5,\ H_A:p>0.5$, betrachteter Wer: x=7}
+
+\mypic{p-Wert2}
+
+\note{Zweiseitiger t-Test, t=1.7}
+
+\note{
+\begin{itemize}
+\item Der p-Wert ist \textbf{nicht} die Wahrscheinlichkeit, dass die Nullhypothese stimmt.
+\item Der p-Wert ist \textbf{nicht} grösser als die Wahrscheinlickeit eines Fehlers 1. Art.
+\item Der p-Wert sagt nichts über die \textbf{Effektgrösse}. Betrachte das Vertrauensinterval.
+\item Falls man genügend Tests macht findet man immer irgendwann einen signifikanten p-Wert.
+\end{itemize}
+}
+
+\subsection{Multiple testing correction}
+
+K tests, $\prob{\text{Fehler 1.Art in mindestens einem Test}}\leq \alpha$
+
+\dahe jeden einzelnen Test zum Niveau $\alpha/K$ machen!
+
+\vfill
+\null
+\columnbreak
+
+\subsection{Vertrauensintervalle}
+
+\mportant{$I=\{\theta_0$ : Nullhypothese $H_0$ : $\theta=\theta_0$ wird nicht verworfen $\}$}
+
+\note{
+\begin{itemize}
+\ncompaq
+\item Das Vertrauensintervall ist der Wertbereich für $\theta$, den wir aufgrund der vorliegenden Daten als plausibel betrachten.
+\item Das Vertrauensintervall ist \textbf{zufällig}, denn es hängt indirekt von den Realisierungen der Zufallsvariablen ab.
+\item Im Vertrauensintervall sieht man automatisch welche Nullhypothesen verworfen werden.
+\item Je enger das Vertrauensintervall desto genauer die Parameterschätzung.
+\item Das Vertrauensintervall ist \textbf{nicht} der Annahmebereich des Tests. Der Annahmebereich geht von einer konkreten Nullhypothese aus, das Vertrauensintervall definiert annehmbare Nullhypothesen.
+\item Informationsgehalt: Testentscheid$\preceq$P-Wert$\preceq$Vertrauensintervall
+\end{itemize}
+}
+
+\mportname{Alternativinterpretation}{$\prob{I\ni\theta}=1-\alpha$}
+
+\importname{z-Test}{$I=\bar{X}_n\pm\frac{\sigma}{\sqrt{n}}z_{1-\frac{\alpha}{2}}$}
+
+\importname{t-Test}{$I=\bar{X}_n\pm\frac{S_n}{\sqrt{n}}t_{n-1,1-\frac{\alpha}{2}}$}
+
+\note{Länge eines Vertrauensintervalls: $1-\alpha$ Interval \dahe $L_\alpha=2\frac{\sigma}{\sqrt{n}}z_{1-\alpha_2}$}
+
+\subsection{Statistische Signifikanz und Fachliche Relevanz}
+
+Beispiel: Abfüllmaschine
+
+Abweichungen vom Sollgewicht, $\SI{1000}{\gram}$ bis zu $\SI{5}{\gram}$ spielen keine Rolle.
+
+Irrelevanzbereich: $(995,1005)$ Alle Abweichungen ausserhalb sind relevant.
+
+Vertrauensintervall: $[1001.75,1003.51]$
+
+Es ist also möglich das eine Abweichung als statistisch signifikant behandelt wird, obwohl sie nicht relevant ist.
+
+\mypic{Relevant}
+
+\vfill
+\null
+\columnbreak
+
+\subsection{Vorzeichen-Test}
+
+\note{Für nicht normalverteilte Daten}
+
+\mportname{Median}{$\mu$}
+
+\mportant{$H_0:\mu=\mu_0$}
+
+\mportant{$H_A:\mu\neq\mu_0$}
+
+Idee: Wenn $\mu=\mu_0$ tatsächlich stimmt, dann sollten wir gleich viele Werte grösser $\mu_0$ wie Werte kleiner $\mu_0$ beobachten.
+
+\mportant{Q = Anzahl Werte grösser $\mu_0$}
+
+Unter $H_0$ folgt dann Q einer Bin(n,0.5)-Verteilung, so dass man einen Binominaltest durchführen kann.
+
+\subsection{Wilcoxon-Test}
+
+\mportant{$X_1,\ldots,X_n\sim\mathcal{F}(\mu)$}
+
+\note{wobei $\mathcal{F}(\mu)$ eine \textbf{symmetrische} und \textbf{stetige} Verteilung mit Mittelwert bzw. Median $\mu$ ist.}
+
+\mportant{Rang$(|X_i-\mu_0|)=k$}
+
+\mportant{$V_i=\begin{cases}1&X_i >\mu_0\\0&\text{sonst}\end{cases}$}
+
+\importname{$W=\sum\limits_{i=1}^n\text{Rang}(|X_i-\mu_0|)V_i$}{Teststatistik}
+
+Der Verwerfungsbereich ergibt sich aus Tabelle 7.4 im Skript.
+
+\newpage
+
+\section{Vergleich zweier Stichproben}
+
+\subsection{Gepaarte und ungepaarte Stichproben}
+
+\textbf{Gepaarte Stichprobe:} Beide Versuchsbedingungen an derselben Versuchseinheit eingesetzt.
+
+\textbf{Ungepaarte Stichprobe:} Versuchseinheiten beider Gruppen sind unabhängig.
+
+\subsection{Versuchsplanung}
+
+Es muss sichergestellt werden, dass Unterschiede zwischen den Testgruppen tatsächlich durch verschidene Versuchsbedingungen und nicht durch andere Störgrössen verursacht werden.
+
+\textbf{Randomisierung:} Zuordnung von Versuchseinheit und Versuchsbedingung wird zufällig gewählt und in zufälliger Reihenfolge ausgemessen.
+
+Für gepaarte Stichproben kann nur die Reihenfolge / Platzierung der Versuchsbedingungen und der Ausmessung randomisiert werden.
+
+Wenn die eine Versuchsbedingung als Kontrollgruppe dient \dahe \textbf{randomisierte kontrollierte Sudie}.
+
+Randomisierung ist so mächtig, da sie eine systematische Aufteilung der Testgruppen ausschliesst und somit jeder Unterschied der Testgruppen auf die verschiedenen Versuchsbedingungen zurückzuführen ist.
+
+Bekannte Eigenschaften, von denen man im Voraus weiss, dass sie Einfluss auf das Ergebnis haben sollen ausgenutzt werden um homogene Gruppen zu bilden (Blocks).
+
+\important{Block what you can, randomize what you cannot.}
+
+\textbf{Doppelblindheit:} Weder die Versuchseinheit, noch der Messer weiss unter welchen Versuchsbedingungen gemessen wird.
+
+\textbf{Beobachtungsstudie:} Wenn Versuchsbedingungen nicht randomisiert werden können (Rauchen - Lungenkrebs).
+
+\textbf{Cofounder:} Umstand der einen Einfluss auf die Messergebnisse hat, der nicht von den Versuchsbedingungen herrührt. Wird automatisch durch Randomisierung ausgeschlossen.
+
+\subsection{Gepaarte Vergleiche}
+
+Gepaarte Stichprobe \dahe Differenz innerhalb der Paare: $u_i=x_i-y_i$
+
+Kein Unterschied \dahe $\expe{U_i}=0$
+
+\mportant{$H_0: \expe{U_i}=0$}
+
+\mportant{$H_A:\expe{U_i}\neq 0$}
+
+
+Geeignete Tests:
+\note{
+\begin{enumerate}
+\ncompaq
+\item t-Test
+\item Vorzeichen-Test, falls die Normalverteilung nicht gerechtfertigt scheint.
+\item Wilcoxon-Test
+\end{enumerate}
+}
+
+\subsection{Zwei-Stichproben Tests}
+
+Bei unabhängigen Stichproben lassen sich keine Paare bilden, dann hat man 2 i.i.d. Zufallsvariablen:
+
+\mportant{$X_1,\ldots,X_n\qquad Y_1,\ldots,Y_m$}
+
+im einfachsten Fall:
+
+\mportant{$X_1,\ldots,X_n\ i.i.d.\sim\mathcal{N}(\mu_X,\sigma^2)\qquad Y_1,\ldots,Y_m\ i.i.d.\sim\mathcal{N}(\mu_Y,\sigma^2)$}
+
+Dann haben wir folgende Hypothesen:
+
+\mportant{$H_0:\mu_X=\mu_Y$}
+
+\mportant{$H_A:\mu_X\neq\mu_Y$}
+
+\mportname{$Z=\frac{(\bar{X}_n-\bar{Y}_m)-(\mu_X-\mu_Y)}{\sigma\sqrt{\frac{1}{n}1\frac{1}{m}}}$}
+
+\note{Erste Definition der Teststatistik Z.}
+
+Da $\var{\bar{X}_n-\bar{Y}_m}=\sigma^2(\frac{1}{n}+\frac{1}{m})$ ist $Z\sim\mathcal{N}(0,1)$!
+
+Aber $\sigma$ ist in der Praxis unbekannt. Also $\sigma\rightarrow S_{pool}$
+
+\importable{\note{$S_{pool}^2$&$=\frac{1}{n+m-2}\left(\sum\limits_{i=1}^n(X_i-\bar{X}_n)^2+\sum\limits_{i=1}^m(Y_i-\bar{Y}_m)^2\right)$\\&$=\frac{1}{n+m-2}\left((n-1)S_X^2+(m-1)S_Y^2\right)$}}
+
+\note{$S_{pool}$ ist ein gewichtetes Mittel der Schätzungen der Varianzen in den beiden Gruppen.}
+
+\importname{Teststatistik}{$T=\frac{(\bar{X}_n-\bar{Y}_m)-(\mu_X-\mu_Y)}{S_{pool}\sqrt{\frac{1}{n}+\frac{1}{m}}}$}
+\note{
+\importabflex{l@{$\Leftrightarrow$}ll}{
+$|t|\geq t_{\ast,1-\frac{\alpha}{2}}$&$t\in K=(-\infty,-t_{\ast,1-\frac{\alpha}{2}}]\cup[t_{\ast,1-\frac{\alpha}{2}},\infty)$&$H_A:\mu_X\neq\mu_Y$\\
+$t\geq t_{\ast,1-\alpha}$&$t\in K=[t_{\ast,1-\alpha},\infty)$&$H_A:\mu_X>\mu_Y$\\
+$t\leq -t_{\ast,1-\alpha}$&$t\in K=(-\infty,t_{\ast,\alpha}]=(-\infty,-t_{\ast,1-\alpha}]$&$H_A:\mu_X<\mu_Y$
+}
+}
+$t_\ast = t_{n+m-2}$
+
+\section{Übersicht}
+
+\subsection{Die wichtigsten 1D Verteilungen}
+
+\mportabflex{lllll}{
+Verteilung&$p(x)$&$W_X$&$\expe{X}$&$\var{X}$\\
+\hline
+Bernoulli(p)&$p^x(1-p)^{1-x}$&$\{0,1\}$&$p$&$p(1-p)$\\
+Bin(n,p)&${n\choose k}p^x(1-p)^{n-x}$&$\{0,\ldots,n\}$&$np$&$np(1-p)$\\
+Geom(p)&$p(1-p)^{x-1}$&$\{1,2,\ldots\}$&$\frac{1}{p}$&$\frac{1-p}{p^2}$\\
+Pois($\lambda$)&$e^{-\lambda}\frac{\lambda^x}{x!}$&$\{0,1,\ldots\}$&$\lambda$&$\lambda$\\
+Uni(a,b)&$\frac{1}{b-a}$&$[a,b]$&$\frac{a+b}{2}$&$\frac{(b-a)^2}{12}$\\
+Exp($\lambda$)&$\lambda e^{-\lambda x}$&$\mathbb{R}_+$&$\frac{1}{\lambda}$&$\frac{1}{\lambda^2}$\\
+Gamma($\alpha,\lambda$)&$\frac{\lambda^\alpha}{\Gamma(\alpha)}x^{\alpha-1}e^{-\lambda x}$&$\mathbb{R}_+$&$\frac{\alpha}{\lambda}$&$\frac{\alpha}{\lambda^2}$\\
+$\mathcal{N}(\mu,\sigma^2)$&$\frac{1}{\sqrt{2\pi}\sigma}e^{-\onha(\frac{x-\mu}{\sigma})^2}$&$\mathbb{R}$&$\mu$&$\sigma^2$\\
+\hline
+}
+
+\subsection{Rechenregeln}
+
+\begin{enumerate}
+\ncompaq
+\item $\expe{a+bX}=a+b\cdot\expe{X},\ a,b\in\mathbb{R}$
+\item $\expe{a+bX+cY}=a+b\cdot\expe{X}+c\cdot\expe{Y},\ a,b,c\in\mathbb{R}$
+
+\note{egal ob X,Y unabhängig sind oder nicht}
+\item $\var{X}=\expe{X^2}-\expe{X}^2$
+\item $\var{a+bX}=b^2\var{X},\ a,b\in\mathbb{R}$
+\item $\sigma_{a+bX}=|b|\sigma_X,\ b\in\mathbb{R}$
+\item $\var{a}=0,\ a\in\mathbb{R}$
+\item $\cov{X,Y}=\expe{XY}-\expe{X}\expe{Y}$
+\item $\cov{X,Y}=\cov{Y,X}$
+\item $\cov{X,X}=\var{X}$
+\item $\cov{X,Y+Z}=\cov{X,Y}+\cov{X,Z}$
+\item $\cov{X,a}=0,\ a\in\mathbb{R}$
+\item $\cov{a+bX,c+dY}=bd\cov{X,Y},\ a,b,c,d\in\mathbb{R}$
+\item $\corr{a+bX,c+dY}=\sign{b}\sign{d}\corr{X,Y},\ a,b,c,d\in\mathbb{R}$
+\item $\var{X+Y}=\var{X}+\var{Y}+2\cov{X,Y}$
+\item Sind X und Y \textbf{unabhängig} so gilt:
+\begin{itemize}
+\ncompaq
+\item $\cov{X,Y}=0$
+\item $\corr{X,Y}=0$
+\end{itemize}
+\note{\textbf{Achtung:} Die Umkehrung gilt im Allgemeinen nicht! D.h. aus Unkorreliertheit folgt nicht Unabhängigkeit.}
+\item X und Y \textbf{unabhängig} (oder allgemeiner: unkorreliert), so gilt:
+\begin{itemize}
+\ncompaq
+\item $\var{X+Y}=\var{X}+\var{Y}$
+\item $\var{X-Y}=\var{X}+\var{Y}$
+\item $\expe{XY}=\expe{X}\expe{Y}$
+\end{itemize}
+\end{enumerate}
+
+Oder allgemeiner für mehrere Zufallsvariablen:
+
+\begin{enumerate}
+\ncompaq
+\setcounter{enumi}{16}
+\item $\mathbb{E}\left[a_0+\sum\limits_{i=1}^na_iX_i\right]=a_0+\sum\limits_{i=1}^na_i\expe{X_i},\ a_i\in\mathbb{R}$
+\item \small$\text{Cov}\left(a_0+\sum\limits_{i=1}^na_iX_i,b_0+\sum\limits_{j=1}^mb_jY_j\right)=\sum\limits_{i=1}^n\sum\limits_{j=1}^ma_ib_j\cov{X_i,Y_j},\ a_i,b_j\mathbb{R}$\normalsize
+\item $\text{Var}\left(a_0+\sum\limits_{i=1}^na_iX_i\right)=\sum\limits_{i=1}^n\sum\limits_{j=1}^na_ia_j\cov{X_i,X_j},\ a_i\in\mathbb{R}$
+\item $X_1,\ldots,X_n$ \textbf{unabhängig} (oder allgemeiner unkorreliert), so gilt:
+
+\begin{center}$\text{Var}\left(a_0+\sum\limits_{i=1}^na_iX_i\right)=\sum\limits_{i=1}^na_i^2\var{X_i}$\end{center}
+
+für $a_i\in\mathbb{R}$ (konstanter Term fällt weg, es verbleibt die Summe der Varianzen.
+\end{enumerate}
+
+
+
+
+\end{multicols*}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
